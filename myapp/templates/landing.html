@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% load static %}
+    <title>Nomads Group </title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/logo.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/logo.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/logo.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/logo.png' %}">
+    <link rel="manifest" href="{% static 'assets/img/favicons/manifest.json' %}">
+    <meta name="msapplication-TileImage" content="{% static 'assets/img/favicons/mstile-150x150.png' %}">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="{% static 'assets/css/theme.css' %}" rel="stylesheet" />
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="{% url 'index' %}'"><img class="d-inline-block" src="{% static 'assets/img/logo.png' %}" width="50" alt="logo" /><span class="fw-bold text-primary ms-2">Nomads Group</span></a>
+        
+          </div>
+        </div>
+      </nav>
+
+
+
+      <section class="py-7 overflow-hidden" id="explore">
+        <div class="container bg-offcanvas-gray-right">
+          <div class="row gx-2">
+            <div class="col-sm-6 col-lg-4">
+              <div class="bg-primary-gradient h-100 d-flex align-items-end">
+                <div class="row g-0 justify-content-start">
+                  <div class="col-xl-9">
+                    <div class="p-10 px-lg-4 text-light"><i class="fas fa-hotel fs-5 mb-3"></i>
+                      <h2 class="mb-3 text-light">Let Nomads Group Serve You</h2>
+                      <p> Known for its exceptional services and hospitality. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="row g-2">
+                <div class="col-12 ">
+                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100 w-100" src="{% static 'assets/img/trip.jpg' %}" height="375" alt="..." />
+                    <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
+                      <div class="mt-auto px-4">
+                        <h3 class="fs-1 fs-md-2 text-white">Nomads Adventure Services</h3>
+                        <!-- <div class="d-flex align-items-center justify-content-start"><span class="text-light fs--1 me-1"><i class="fas fa-map-marker-alt"></i></span><span class="text-light me-md-3">Soi Petchburi 19, Bankok</span></div> -->
+                        <!-- <p class="mb-0 mt-3">Starts from </p>
+                        <h1 class="mb-2 text-light fw-bolder fs-2 fs-md-4"><span>$175</span><span class="text-light fs--1 fw-normal">/Per person</span></h1> -->
+                      </div>
+                    </div><a class="stretched-link" href="https://www.nastours.pk"> </a>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="card card-span h-100 text-white"><img class="img-fluid h-100 w-100" src="{% static 'assets/img/hut1.png' %}" height="375" alt="..." />
+                    <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
+                      <div class="mt-auto px-4">
+                        <h3 class="fs-1 fs-md-2 text-white">Turtle Beach Huts</h3>
+                        <!-- <div class="d-flex align-items-center justify-content-start"><span class="text-light fs--1 me-1"><i class="fas fa-map-marker-alt"></i></span><span class="text-light me-md-3">Dismesi Sokak, Istanbul</span></div> -->
+                        <!-- <p class="mb-0 mt-3">Starts from </p>
+                        <h1 class="mb-2 text-light fw-bolder fs-2 fs-md-4"><span>$175</span><span class="text-light fs--1 fw-normal">/Per person</span></h1> -->
+                      </div>
+                    </div><a class="stretched-link" href="http://www.turtlebeachhut.com/"> </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="row g-2">
+                <div class="col-12" style="height: 900px;" >
+                  <div class="card card-span  h-100 text-white" height='100%'><img class="img-fluid  h-100 w-100" src="{% static 'assets/img/farm1.jpeg' %}" alt="..." />
+                    <div class="card-img-overlay ps-0 d-flex flex-column justify-content-between bg-voyage-gradient">
+                      <div class="mt-auto px-4">
+                        <h3 class="fs-1 fs-md-2 text-white">Farms By Nomads</h3>
+                        <!-- <div class="d-flex align-items-center justify-content-start"><span class="text-light fs--1 me-1"><i class="fas fa-map-marker-alt"></i></span><span class="text-light me-md-3">Kedewatan, Bali</span></div> -->
+                        <!-- <p class="mb-0 mt-3">Starts from </p>
+                        <h1 class="mb-2 text-light fw-bolder fs-2 fs-md-4"><span>$175</span><span class="text-light fs--1 fw-normal">/Per person</span></h1> -->
+                      </div>
+                    </div><a class="stretched-link" href="/farm"> </a>
+                  </div>
+                </div>
+               </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+      <!-- <section>
+        <div class="bg-holder" style="background-image:url(assets/img/gallery/cta-bg.png);background-position:center;background-size:cover;">
+        </div>
+        
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-lg-6 text-center"><img class="mb-5 mb-lg-0" src="assets/img/gallery/cta-mobile.png" alt="..." /></div>
+            <div class="col-lg-6 text-center">
+              <h1 class="fs-6 pe-xxl-10">Get the app</h1>
+              <div class="mt-4 pe-xxl-10"><a href="https://play.google.com/store/apps" target="_blank"><img class="me-3" src="assets/img/gallery/google-play.png" width="170" alt="..." /></a><a href="https://www.apple.com/app-store/" target="_blank"> <img src="assets/img/gallery/app-store.png" width="170" alt="..." /></a></div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="{% static 'vendors/@popperjs/popper.min.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendors/is/is.min.js' %}"></script>
+    <script src="{% static 'https://polyfill.io/v3/polyfill.min.js?features=window.scroll' %}"></script>
+    <script src="{% static 'vendors/fontawesome/all.min.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>
