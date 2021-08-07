@@ -1,20 +1,9 @@
 from django import forms
-from .models import Check, Book, Contact
+from .models import *
 from django.db import models
-from django import forms
 
-class CheckForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+class TubularTower(forms.ModelForm):
     class Meta:
-        model = Check
-        fields = ('farmhouse_Name','date', 'Day_or_Night',)
+        model = Tower
+        fields = ('tower_height', 'frequency','temperature_effect','spacing_between_conductors', 'conductor_type','line_type','conductor_length','conductor_crosssectional_area','cable_configuration','power_transmitted_in_MVA','sending_end_voltage_in_KV' )
 
-class BookForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
-    class Meta:
-        model = Book
-        fields = ('Your_Name','farmhouse_Name', 'Number_Of_People','date', 'Day_or_Night','Contact')
-class ContactForm(forms.ModelForm):
-    class Meta:
-        model = Contact
-        fields = ('Name', 'Email','Subject', 'Message',)

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Check, Book
+from .models import Tower
 # Register your models here.
-admin.site.register(Check)
-admin.site.register(Book)
+admin.site.register(Tower)
