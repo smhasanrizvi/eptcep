@@ -53,6 +53,13 @@ class Tower(models.Model):
         ('DOUBLE CIRCUIT BUNDLED (4C)','DOUBLE CIRCUIT BUNDLED (4C)'),
     )
     line_type = models.CharField(max_length=200,choices=line_choices,default='',blank=True)
+    insulator_choices = (
+        ('Pin type','Pin type'),
+        ('Suspension type','Suspension type'),
+        ('Strain type','Strain type'),
+        
+    )
+    insulator_type = models.CharField(max_length=200,choices=insulator_choices,default='',blank=True)
     
     def __str__(self):
         return self.name

@@ -1,3 +1,11 @@
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  </head>
+  <body>
+  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
@@ -201,9 +209,36 @@ img{
         padding-top: 0;
     }
 }
+.progress-meter {
+  
+  .background {
+    fill: #DFEAFD;
+  }
+  
+  .foreground {
+    fill: #2E7AF9;
+  }
+  
+  text {
+    font-family: 'Georgia' sans-serif;
+    font-size: 90px;
+  }
+  
+  .text2 {
+    font-family: 'Georgia' sans-serif;
+    font-size: 20px;
+  }
+}
 
 </style>
+<style>
+  .progress-meter text {
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 24px;
+font-weight: bold;
+}
 
+</style>
 <!-- <br><br> -->
 <div class = "card-wrapper">
     <div class = "card">
@@ -262,20 +297,21 @@ img{
           <p>This is a 11 kV line and it is used for pre distribution purposes. The one in the picture is a PCC Pole.</p>
           <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p> -->
           <ul>
-            <li>HEIGHT OF TOWER: <span>8 m</span></li>
-            <li>CONDUCTOR TYPE: <span>ALUMUNIUM CONDUCTOR STEEL REINFORCED (ACSR)</span></li>
+            <li>HEIGHT OF TOWER: <span>{{ product.tower_height }} m</span></li>
+            <li>CONDUCTOR TYPE: <span>{{ product.conductor_type }}</span></li>
             <!-- <li>CONDUCTOR LENGTH: <span>2000 m</span></li> -->
-            <li>INSULATOR: <span>PIN TYPE</span></li>
-            <li>CONDUCTOR CROSS- SECTIONAL AREA: <span>0.003 m<sup>2</sup></span></li>
+            <li>INSULATOR: <span>{{ product.insulator_type }}</span></li>
+            <li>CONDUCTOR CROSS- SECTIONAL AREA: <span>{{ product.conductor_crosssectional_area }} m<sup>2</sup></span></li>
             <li>SPACING BETWEEN BUNDLED CONDUCTORS: <span> NOT APPLICABLE</span></li>
-            <li>SPAN: <span>65 m</span></li>
+            <li>SPAN: <span>{{ product.span }} m</span></li>
             <li>EARTH WIRE: <span>NOT PRESENT</span></li>
             <!-- <li>CUMMULATIVE LINE LOADING: <span>Black</span></li> -->
-            <li>LINE RESISTANCE: <span>0.01664 ohms at 29 degress</span></li>
-            <li>INDUCTANCE OF TRANSMISSION LINES: <span>8.8161 mH/Km</span></li>
-            <li>CAPACITANCE: <span>1309.14 pF/Km</span></li>
-            <li>SKIN DEPTH: <span>0.01163 m</span></li>
-            <li>TEMPERATURE EFFECT: <span> RESISTANCE INCREASES TO 0.01765 Ohm at 45 Degree celcius</span></li>
+            <li>LINE RESISTANCE: <span>{{ product.resistance }} ohms at 32 degress</span></li>
+            <li>INDUCTANCE OF TRANSMISSION LINES: <span>{{ product.inductance_of_transmission_lines }} mH/Km</span></li>
+            <li>CAPACITANCE: <span>{{ product.capacitance }} pF/Km</span></li>
+            <li>SKIN DEPTH: <span>{{ product.skin_depth }} m</span></li>
+            <li>TEMPERATURE EFFECT: <span> RESISTANCE INCREASES TO {{ product.temp_resistance }} Ohm at {{ product.temperature_effect }} Degree celcius</span></li>
+            
           </ul>
         </div>
 
@@ -288,25 +324,326 @@ img{
           </button>
           <!-- <button type = "button" class = "btn">Compare</button> -->
         </div>
+        <script>
+          $(document).ready(function(){
+          $(".widget-meter").addClass("meter-status");
+          var Mrotate1 = $("#nxt-meter-status").attr("data-meter");
+          var Mrotate = 1.33 * Mrotate1;
+          var Mrotate2 = $("#nxt-meter-status2").attr("data-meter");
+          var Mrotate2 = 1.33 * Mrotate2;
+          
+          $("#nxt-need-tocomplete").text(100 - Mrotate1);
+          $("#nxt-need-tocomplete2").text(100 - Mrotate2);
+          
+          var statusStep = 0;
+          function statusfunction(){
+          $("#nxt-meter-status span").text(statusStep);
+            if( statusStep < Mrotate1 ){
+              statusStep = ( statusStep + 1);
+              setTimeout(function(){
+                statusfunction();
+              },2000/ Mrotate1 );
+            }
+          }
+          statusfunction();
+            $(document).ready(function () {
+            $('#MyDiv2').animate(
+                { deg: 133 },
+                {
+                  duration: 1000,
+                  step: function(now) {
+                    $(this).css({ transform: 'rotate(' + now + 'deg)' });
+                  }
+                }
+              );
+            $('#MyDiv2').animate(
+                { deg: Mrotate },
+                {
+                  duration: 2000,
+                  step: function(now) {
+                    $(this).css({ transform: 'rotate(' + now + 'deg)' });
+                  }
+                }
+              );    
+            });
+            $(document).ready(function () {
+            $('#MyDiv3').animate(
+                { deg: 133 },
+                {
+                  duration: 1000,
+                  step: function(now) {
+                    $(this).css({ transform: 'rotate(' + now + 'deg)' });
+                  }
+                }
+              );
+            $('#MyDiv3').animate(
+                { deg: Mrotate },
+                {
+                  duration: 2000,
+                  step: function(now) {
+                    $(this).css({ transform: 'rotate(' + now + 'deg)' });
+                  }
+                }
+              );    
+            });
+          });
+          
+        </script>
+        
+       
+       <style>
+         .widget-meter{
+  width: 220px;
+  height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+.widget-meter:after, .widget-meter:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 36%;
+    z-index: 100;
+}
+.widget-meter:before {
+    left: 0;
+    border-left: 130px solid #fff;
+    border-top: 82px solid transparent;
+}
+.widget-meter:after {
+    right: 0;
+    right: 0;
+    border-right: 130px solid #fff;
+    border-top: 82px solid transparent;
+}
+#nxt-meter-status{
   
-        <!-- <div class = "social-links">
-          <p>Share At: </p>
-          <a href = "#">
-            <i class = "fab fa-facebook-f"></i>
-          </a>
-          <a href = "#">
-            <i class = "fab fa-twitter"></i>
-          </a>
-          <a href = "#">
-            <i class = "fab fa-instagram"></i>
-          </a>
-          <a href = "#">
-            <i class = "fab fa-whatsapp"></i>
-          </a>
-          <a href = "#">
-            <i class = "fab fa-pinterest"></i>
-          </a>
-        </div> -->
+}
+       </style>
+        <div class="nxt-discover-partner-nav px-0 pt-0 nxt-meter-status nst-sidebar-item">
+          <!-- add percentage to data-meter attribute -->
+          <!-- yaad rakho -->
+          <span id="nxt-meter-status" data-meter="{{ product.efficiency }}"><span></span>%</span> 
+          <h3>Efficiency</h3>
+          
+          <div class="widget-meter">
+              <svg version="1.1" id="MyDiv2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 182 182" style="enable-background:new 0 0 182 182;" xml:space="preserve">
+                    <style type="text/css">
+                      .st0{fill:none;}
+                      .st1{fill:#0BC9A1;}
+                      .st2{fill:#F2F2F2;}
+                      .st3{fill:#083362;}
+                    </style>
+                    <g>
+                      <path class="st0" d="M79,92C74,90,57.1,81.7,40.9,73.7c-7.7,22.1,0.1,47.4,20.4,61.1c24.2,16.3,57.1,9.9,73.4-14.3
+                        c2.3-3.4,4.1-6.9,5.5-10.5l-49-19.9C90.2,92.7,87.8,95.2,79,92z"/>
+                      <path class="st1" d="M134.9,120.6c-16.3,24.2-49.2,30.6-73.4,14.3c-20.3-13.7-28.1-39-20.4-61.1c-17.4-8.6-33.8-17-33.8-17
+                        s2.4,0.6,6.3,1.8L7,56c-16.4,39.1-3.4,85.7,33.1,110.4c41.7,28.1,98.2,17.1,126.3-24.6c3.8-5.6,6.9-11.4,9.3-17.5l-35.3-14.3
+                        C139,113.7,137.1,117.2,134.9,120.6z"/>
+                      <path class="st2" d="M141.9,15.6C100.2-12.6,43.7-1.6,15.6,40.1C12.1,45.3,9.2,50.6,7,56l6.4,2.6c6.8,1.9,18.2,5.3,30.2,8.8
+                        c1-2.1,2.2-4.1,3.4-6c16.3-24.2,49.2-30.6,73.4-14.3c20.9,14.1,28.5,40.4,19.8,62.9l35.3,14.3C191.1,85.5,177.9,39.9,141.9,15.6z"
+                        />
+                      <path class="st3" d="M87.1,80.5c-2.3-1.1-23.5-7.3-43.5-13.2c-11.9-3.4-23.4-6.8-30.2-8.8c-3.9-1.2-6.3-1.8-6.3-1.8
+                        s16.5,8.3,33.8,17C57.1,81.7,73.9,90,79,92c8.7,3.3,11.2,0.8,12.3-1.7c0.1-0.3,0.3-0.6,0.3-0.9C92.7,86.7,90.8,82.2,87.1,80.5z"/>
+                    </g>
+              </svg>
+           </div>
+           <span id="" data-meter="1"><span>{{ voltage_regulation }}</span>%</span> 
+           <h3>Voltage Regulation </h3>
+           
+           
+           <div class="widget-meter">
+            <svg version="1.1" id="MyDiv3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 182 182" style="enable-background:new 0 0 182 182;" xml:space="preserve">
+                  <style type="text/css">
+                    .st0{fill:none;}
+                    .st11{fill:red;}
+                    .st2{fill:#F2F2F2;}
+                    .st3{fill:#083362;}
+                  </style>
+                  <g>
+                    <path class="st0" d="M79,92C74,90,57.1,81.7,40.9,73.7c-7.7,22.1,0.1,47.4,20.4,61.1c24.2,16.3,57.1,9.9,73.4-14.3
+                      c2.3-3.4,4.1-6.9,5.5-10.5l-49-19.9C90.2,92.7,87.8,95.2,79,92z"/>
+                    <path class="st11" d="M134.9,120.6c-16.3,24.2-49.2,30.6-73.4,14.3c-20.3-13.7-28.1-39-20.4-61.1c-17.4-8.6-33.8-17-33.8-17
+                      s2.4,0.6,6.3,1.8L7,56c-16.4,39.1-3.4,85.7,33.1,110.4c41.7,28.1,98.2,17.1,126.3-24.6c3.8-5.6,6.9-11.4,9.3-17.5l-35.3-14.3
+                      C139,113.7,137.1,117.2,134.9,120.6z"/>
+                    <path class="st2" d="M141.9,15.6C100.2-12.6,43.7-1.6,15.6,40.1C12.1,45.3,9.2,50.6,7,56l6.4,2.6c6.8,1.9,18.2,5.3,30.2,8.8
+                      c1-2.1,2.2-4.1,3.4-6c16.3-24.2,49.2-30.6,73.4-14.3c20.9,14.1,28.5,40.4,19.8,62.9l35.3,14.3C191.1,85.5,177.9,39.9,141.9,15.6z"
+                      />
+                    <path class="st3" d="M87.1,80.5c-2.3-1.1-23.5-7.3-43.5-13.2c-11.9-3.4-23.4-6.8-30.2-8.8c-3.9-1.2-6.3-1.8-6.3-1.8
+                      s16.5,8.3,33.8,17C57.1,81.7,73.9,90,79,92c8.7,3.3,11.2,0.8,12.3-1.7c0.1-0.3,0.3-0.6,0.3-0.9C92.7,86.7,90.8,82.2,87.1,80.5z"/>
+                  </g>
+            </svg>
+         </div>
+
+
+
+          
+
       </div>
     </div>
   </div>
+
+
+  <style>
+    .open-form,
+.reset-form {
+    margin-top: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 25px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 19px;
+    border: 2px solid #83b566;
+    background-color: #83b566;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: .3s;
+}
+.form-popup,
+.success-message {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+.form-popup .form-wrapper {
+    top: 2em;
+    max-width: 700px;
+    background: white;
+    padding: 50px;
+    padding-top: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.form-title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.close-form {
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    cursor: pointer;
+    padding: 10px 30px;
+    background-color: #83b566;
+    border: 2px solid #83b566;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    transition: .3s;
+}
+.send-form {
+    cursor: pointer;
+    padding: 10px 30px;
+    background-color: #83b566;
+    border: 2px solid #83b566;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+.form-control:focus {
+    border-color: #83b566;
+    box-shadow: 0 0 0 0.2rem rgba(131, 181, 102, 0.25);
+}
+.btn:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+}
+.success-message {
+    text-align: center;
+}
+.success-message h1 {
+    color: #ffffff;
+    margin-top: 3em;
+}
+.hello {
+  color: blue;
+  background-color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.hello:hover {
+  color: white;
+  background-color: blue;
+}
+.textinput,select {
+  width: 200px;
+  height: 50px;
+}
+  </style>
+  <button class="btn open-form">Open form</button>
+  
+  <div class="form-popup">
+			<div class="container form-wrapper">
+				<button class="btn close-form">Close</button>
+			<h3 style="color:#256eff; text-align:center">Analyze Your Own Model</h3>
+          <form id="my-form" novalidate="novalidate" class="form-contact contact_form" action="{% url 'tubular' product.id %}" method="POST" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="container col-20">
+              <div align='center' class="form-group" style="color:red;font-size: 30px;padding: 15px;margin: 15px;">
+                {% block bookingsform %}
+                {% load crispy_forms_tags %}
+                {{ form|crispy}}
+              <button type="submit" class="btn draw-border btn-primary hello" >Run Analysis</button>
+           
+            </div>
+            
+            {% endblock bookingsform %}
+
+
+       </form>
+			</div>
+		</div>
+  <div class="success-message">
+    <h1>You success reset this form</h1>
+  </div>
+  <script>
+    $(document).ready(function() {
+
+$('.open-form').click(function() {
+  $('.form-popup').show();
+});
+$('.close-form').click(function() {
+  $('.form-popup').hide();
+});
+
+$('.reset-form').click(function() {
+  $('.success-message').show();
+  $('#my-form').trigger( 'reset' );
+
+  setTimeout(function() {
+    $('.success-message').hide()
+  }, 1500);
+});
+
+$(document).mouseup(function(e) {
+  var container = $(".form-wrapper");
+  var form = $(".form-popup");
+
+  if (!container.is(e.target) && container.has(e.target).length === 0) {
+    form.hide();
+  }
+});
+
+
+});
+  </script>
+</body>
+
+</html>

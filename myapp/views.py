@@ -73,5 +73,7 @@ def tubular(request,id):
         tower.conductor_crosssectional_area = request.POST.get('conductor_crosssectional_area')
         tower.spacing_between_conductors = request.POST.get('spacing_between_conductors')
         tower.line_type = request.POST.get('line_type')
+        tower.insulator_type = request.POST.get('insulator_type')
+        vr = tower.voltage_regulation
         form = TubularTower()
-    return render(request, 'tower.html', context={'product':tower,'temp_resistance':temp_resistance,'form': form})
+    return render(request, 'detailpage.html', context={'product':tower,'temp_resistance':temp_resistance,'form': form, 'voltage_regulation':vr})
